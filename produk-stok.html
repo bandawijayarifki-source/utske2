@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><title>Manajemen Produk & Stok - Bang Zul Egg Market</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary":"#835500","secondary-fixed":"#a3f69c","tertiary":"#556158","surface-container":"#f0eded","on-primary-container":"#644000","secondary-fixed-dim":"#88d982","on-surface-variant":"#524534","outline-variant":"#d7c3ae","on-tertiary-container":"#3e4a41","on-error-container":"#93000a","on-secondary-fixed":"#002204","tertiary-container":"#acb9ae","surface-container-high":"#eae7e7","on-primary":"#ffffff","tertiary-fixed-dim":"#bdcabe","error-container":"#ffdad6","on-tertiary":"#ffffff","on-secondary":"#ffffff","on-secondary-container":"#217128","on-background":"#1b1c1c","surface":"#fcf9f8","inverse-primary":"#ffb955","inverse-on-surface":"#f3f0f0","primary-container":"#f5a623","surface-container-lowest":"#ffffff","on-error":"#ffffff","inverse-surface":"#303030","error":"#ba1a1a","primary-fixed":"#ffddb4","background":"#fcf9f8","on-tertiary-fixed":"#131e17","on-secondary-fixed-variant":"#005312","on-primary-fixed":"#291800","surface-tint":"#835500","secondary-container":"#a0f399","surface-dim":"#dcd9d9","tertiary-fixed":"#d9e6da","surface-container-low":"#f6f3f2","surface-variant":"#e4e2e1","on-tertiary-fixed-variant":"#3e4a41","primary-fixed-dim":"#ffb955","outline":"#857462","on-primary-fixed-variant":"#633f00","surface-bright":"#fcf9f8","secondary":"#1b6d24","surface-container-highest":"#e4e2e1","on-surface":"#1b1c1c"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1rem","space-xl":"2rem","margin":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","gutter-desktop":"1.5rem","space-lg":"1.5rem","margin-desktop":"2.5rem","space-md":"1rem"},"fontFamily":{"label-lg":["Inter"],"price-display":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"stock-counter":["Inter"],"headline-sm":["Plus Jakarta Sans"],"body-md":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Inter"],"display-lg":["Plus Jakarta Sans"],"body-sm":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},"fontSize":{"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"price-display":["22px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"800"}],"display-lg-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"800"}],"stock-counter":["18px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"600"}],"display-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"headline-lg-mobile":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_4px_20px_-2px_rgba(245,166,35,0.25)]"><span class="material-symbols-outlined text-[24px]">egg</span></div><div><span class="font-headline-sm text-headline-sm text-on-surface block tracking-tight">Bang Zul Eggs</span><span class="font-label-sm text-label-sm text-on-surface-variant block">Portal Penjual &amp; Admin</span></div></div><div class="mt-space-md p-space-sm rounded-xl bg-secondary-container/40 flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><div class="overflow-hidden"><span class="font-label-sm text-label-sm text-on-secondary-container truncate block">Kandang Utama Lereng Gisting (Stok Live)</span></div></div></div><div class="px-space-md"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm mb-space-xs block">Menu Utama</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm font-bold shadow-[0_2px_8px_rgba(245,166,35,0.2)]"><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-utama" href="dashboard.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">dashboard</span><span class="font-label-lg text-label-lg">Dashboard Utama</span></div></a><a aria-current="page" class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl transition-all bg-primary-container text-on-primary-container font-headline-sm font-bold shadow-[0_2px_8px_rgba(245,166,35,0.2)]" data-path="data-produk-dan-stok" href="produk-stok.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">inventory_2</span><span class="font-label-lg text-label-lg">Data Produk &amp; Stok</span></div></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="kategori-dan-varian" href="produk-stok.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">category</span><span class="font-label-lg text-label-lg">Kategori &amp; Varian</span></div></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-pesanan-masuk" href="dashboard.html#pesanan"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">shopping_bag</span><span class="font-label-lg text-label-lg">Data Pesanan Masuk</span></div><span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm">8</span></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="verifikasi-pembayaran" href="admin.html#verifikasi"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">verified</span><span class="font-label-lg text-label-lg">Verifikasi Pembayaran</span></div><span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm">3</span></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="pengiriman-dan-armada-kurir" href="kurir.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">two_wheeler</span><span class="font-label-lg text-label-lg">Pengiriman &amp; Kurir</span></div></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="pelanggan-dan-mitra-warung" href="admin.html#pelanggan"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">storefront</span><span class="font-label-lg text-label-lg">Pelanggan &amp; Mitra</span></div></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-penjualan" href="laporan.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">query_stats</span><span class="font-label-lg text-label-lg">Laporan Penjualan</span></div></a><a class="group flex items-center justify-between px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="pengaturan-toko-dan-rekening" href="dashboard.html#pengaturan"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-tertiary group-hover:text-primary transition-colors">settings</span><span class="font-label-lg text-label-lg">Pengaturan Toko</span></div></a></nav></div></div><div class="p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-surface-container"><div class="flex items-center gap-space-xs"><span class="w-2.5 h-2.5 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Server Kandang</span></div><span class="font-label-sm text-label-sm font-bold text-secondary">Terhubung</span></div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="etalase-publik" href="index.html"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px]">store</span><span class="font-label-md text-label-md">Lihat Toko Publik</span></div><span class="material-symbols-outlined text-[16px]">north_east</span></a></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Bang Zul Egg Market</span><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">Sistem Operasional Tanggamus</span></div><div class="flex items-center gap-1.5 mt-0.5"><span class="material-symbols-outlined text-[14px] text-secondary">pin_drop</span><span class="font-body-sm text-body-sm text-on-surface-variant">Pos Operasional: Gisting - Talang Padang - Kota Agung</span></div></div></div><div class="flex items-center gap-space-md"><div class="relative hidden xl:block w-72"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full pl-9 pr-3 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="Cari pesanan, mitra, nota..." type="text"/></div><div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-secondary-container/50"><span class="material-symbols-outlined text-secondary text-[16px]">call</span><span class="font-label-sm text-label-sm text-on-secondary-container">CS WA: Aktif</span></div><button class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="text-right hidden md:block"><span class="font-label-lg text-label-lg text-on-surface block leading-tight">Bang Zul</span><span class="font-body-sm text-body-sm text-on-surface-variant block leading-tight">Pemilik &amp; Verifikator Kandang</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 bg-surface min-h-[calc(100vh-5rem)] px-space-lg py-space-lg"><div class="flex flex-col w-full pb-space-xl">
+<!-- BREADCRUMB & HEADER SECTION -->
+<div class="flex flex-col gap-space-sm mb-space-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="hover:text-primary cursor-pointer transition-colors">Beranda</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Inventori &amp; Gudang</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-primary font-bold">Data Produk &amp; Stok</span>
+</div>
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md mt-1">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Manajemen Produk &amp; Inventaris Stok Telur</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-1">
+          Kelola harga pasar harian, pantau pasokan panen lereng Gisting, update stok real-time, dan status ketersediaan komoditas di wilayah Tanggamus.
+        </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center gap-2 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px] text-tertiary">ios_share</span>
+<span>Ekspor Rekap (.XLS)</span>
+</button>
+<button class="px-space-md py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center gap-2 shadow-sm transition-all group">
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:rotate-180 transition-transform duration-500">sync</span>
+<div class="flex flex-col text-left">
+<span class="leading-none">Sinkron Timbangan</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant mt-0.5">06:15 WIB</span>
+</div>
+</button>
+<button class="px-space-lg py-2.5 rounded-xl bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm flex items-center gap-2 shadow-[0_4px_20px_-2px_rgba(245,166,35,0.35)] transition-all transform active:scale-95" onclick="document.getElementById('modalTambahProduk').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Tambah Varian Telur</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI SUMMARY STATS CARDS (4-GRID) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Stat 1: Total Variasi -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.08)] flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Variasi Produk</span>
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">category</span>
+</div>
+</div>
+<div class="my-space-sm">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">12 <span class="font-body-md text-body-md text-on-surface-variant font-normal">Varian</span></span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-container/60 text-on-secondary-container font-bold">10 Aktif</span>
+<span class="text-on-surface-variant">2 Nonaktif (Habis/Musim)</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-primary/5 pointer-events-none"></div>
+</div>
+<!-- Stat 2: Total Butir Siap Jual -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.08)] flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Stok Siap Jual</span>
+<div class="w-10 h-10 rounded-xl bg-secondary-container/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">egg_alt</span>
+</div>
+</div>
+<div class="my-space-sm">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">9.450 <span class="font-body-md text-body-md text-on-surface-variant font-normal">Butir</span></span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary font-bold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+450 butir</span>
+<span class="text-on-surface-variant font-normal">(Panen Subuh Gisting)</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-secondary/5 pointer-events-none"></div>
+</div>
+<!-- Stat 3: Peringatan Stok Menipis -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.08)] flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Peringatan Menipis</span>
+<div class="w-10 h-10 rounded-xl bg-error-container/60 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+</div>
+</div>
+<div class="my-space-sm">
+<span class="font-display-lg text-display-lg text-error tracking-tight">3 <span class="font-body-md text-body-md text-on-surface-variant font-normal">Komoditas</span></span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-error-container text-on-error-container font-bold">Perlu Restok Segera</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-error/5 pointer-events-none"></div>
+</div>
+<!-- Stat 4: Rata-rata Harga Pasar -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.08)] flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Harga Pasar (Karpet)</span>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="my-space-sm">
+<span class="font-price-display text-price-display text-primary tracking-tight">Rp 52.000 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ Tray 30 Btr</span></span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Batas Asosiasi Tanggamus:</span>
+<span class="font-bold text-on-surface">51.5k - 53k</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-primary-container/10 pointer-events-none"></div>
+</div>
+</div>
+<!-- CRITICAL STOCK ALERT BANNER -->
+<div class="mb-space-lg rounded-2xl bg-primary-fixed/40 p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Perhatian Pasokan Terbatas</span>
+<span class="px-2 py-0.2 rounded-full bg-error text-on-error font-label-sm text-[10px] font-bold uppercase">Kritis</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+<strong>3 Komoditas di bawah ambang aman:</strong> Telur Asin Masir Gisting (Sisa 5 Box), Telur Kampung Herbal MPASI (Sisa 4 Pack), dan Telur Puyuh Segar (Sisa 12 Mika).
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end md:self-auto">
+<a class="px-space-md py-2 rounded-xl bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm transition-colors" href="https://wa.me/6281234567890" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Hubungi Peternak via WA</span>
+</a>
+<button class="px-space-md py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors">
+        Catatan Pasokan
+      </button>
+</div>
+</div>
+<!-- FILTER & SEARCH PANEL -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.06)] flex flex-col gap-space-md mb-space-md">
+<!-- Row 1: Search & Controls -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Cari telur ayam ras, kode SKU (BZ-...), kemasan tray/mika..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1.5 rounded-xl">
+<span class="material-symbols-outlined text-outline text-[18px]">filter_list</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Stok:</span>
+<select class="bg-transparent text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option value="semua">Semua Status Stok</option>
+<option value="ready">Ready (&gt;20)</option>
+<option value="menipis">Menipis (&lt;10)</option>
+<option value="habis">Habis (0)</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1.5 rounded-xl">
+<span class="material-symbols-outlined text-outline text-[18px]">swap_vert</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Urutkan:</span>
+<select class="bg-transparent text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option value="terbanyak">Stok Terbanyak</option>
+<option value="harga-tinggi">Harga Tertinggi</option>
+<option value="harga-rendah">Harga Terendah</option>
+<option value="update-terbaru">Terakhir Diupdate</option>
+</select>
+</div>
+<button class="px-space-md py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">price_change</span>
+<span>Update Massal Harga</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Category Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 select-none">
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shrink-0 shadow-sm">
+        Semua Komoditas (12)
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm shrink-0 transition-colors">
+        Telur Ayam Ras (4)
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm shrink-0 transition-colors">
+        Ayam Kampung &amp; Omega (3)
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm shrink-0 transition-colors">
+        Telur Bebek &amp; Asin Masir (3)
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm shrink-0 transition-colors">
+        Telur Puyuh (2)
+      </button>
+</div>
+</div>
+<!-- PRODUCTS & STOCK DATA TABLE -->
+<div class="rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(245,166,35,0.08)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider select-none">
+<th class="py-space-md px-space-md w-12 text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+</th>
+<th class="py-space-md px-space-md">Informasi Varian Telur</th>
+<th class="py-space-md px-space-md">Kemasan &amp; Satuan</th>
+<th class="py-space-md px-space-md">Harga Jual Pasar</th>
+<th class="py-space-md px-space-md">Status &amp; Total Stok</th>
+<th class="py-space-md px-space-md text-center">Update Cepat Stok</th>
+<th class="py-space-md px-space-md text-center">Toko Pembeli</th>
+<th class="py-space-md px-space-md text-center">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm">
+<!-- Row 1: Telur Ras Karpet Super -->
+<tr class="hover:bg-surface/60 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Tumpukan telur ayam ras cokelat segar di rak karpet karton di pasar tradisional bernuansa kayu hangat pedesaan Tanggamus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACK-934zcy8IEaGHzb08S8ubrf08aiIY8gY0pOnfGOyBRNPQatG27u0YHfIbwhY-Jpl6bnfDy9WR9lAGH8X2DFr9JYSlCbRhQWh7V25roHNIo2ga0u8w69nXL1BZ3F3w8VQDMIYfiz2z0PRD__S2JiwfWdTQRSu41FmmLuGVzI4I58FDqDbYrXe6B7PJeJ-ZdaIQ-sw7odzsC2EhnMU7VIqEU_F8eVZWEsl1A7nbA"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block font-bold">Telur Ayam Ras Super Karpet</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-RAS-01</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Ayam Ras Super</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Tray Karton (30 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">±1.9 Kg - 2.0 Kg</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 52.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Grosir &gt;10: Rp 50.500</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">140 Karpet</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total 4.200 Butir Siap Angkut</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-on-surface font-bold focus:outline-none" type="text" value="140"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Telur Ayam Kampung & Omega-3 -->
+<tr class="hover:bg-surface/60 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Keranjang anyaman bambu pedesaan berisi telur ayam kampung alami dengan jerami kering dan suasana dapur rumah kayu tradisional yang hangat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdxVd0qdssEj3pfWOPuM4h_X4SpIle1vO8Si24AL-flhtTxK1pTpPYOohS6L7YSqD9I7NsdHV6Yb0ZQ0ZOP2kHWTG94FQG2Iz8GIvoyUrFSK_ENE59SH_LRsojub_YOwB7mq22J5x-IlTQK8FwqDYLx3nx4hhfownC6jqvZe_Kvb9IKIZNeVSKaxRQ7NiVfro7g9zcyNF_tCxAexElzuCCKDcZy3LOc5pxpJVNhDI"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block font-bold">Telur Ayam Kampung Asli &amp; Omega-3</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-KMP-02</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Kampung Organik</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Mika Higienis (10 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">Kuning telur oranye pekat</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 38.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Kemasan Segel Higienis</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">85 Pack</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total 850 Butir</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-on-surface font-bold focus:outline-none" type="text" value="85"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Telur Bebek Tambak Segar -->
+<tr class="hover:bg-surface/60 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Peti kayu pedesaan berisi butiran telur bebek cangkang hijau kebiruan segar dengan latar belakang pasar hasil tani tradisional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJyQYVrIhSpD-qqliFjr8Wjn5NcTV7zsf4AWzzqNCR6h7hivOWXSBAp3lNU9MAamFUeaS2BtfDC2xf2L0DZWhrDAnLRsLXj-GI2d_CCjjtYagMjuN044ljnRNzITlzqPB4nhUsoSj2jJTwa6n2x4veM__TQ-MkdZUFs0ldpES3WkoyDa84KlxtmtzzF8ckB0FIbAaUg2Pk2HPOKp45yfc1S8527Vbe9aJo1mqO-8Y"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block font-bold">Telur Bebek Tambak Segar (Pesisir)</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-BBK-01</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Bebek Mentah</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Mika Karton (10 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">Cangkang hijau toska tebal</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 32.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Khusus martabak &amp; jamu</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">60 Pack</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total 600 Butir</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-on-surface font-bold focus:outline-none" type="text" value="60"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Telur Asin Masir Asli Gisting (CRITICAL STOCK ROW - HIGHLIGHTED) -->
+<tr class="bg-primary-fixed/20 hover:bg-primary-fixed/30 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Peti kayu berisi telur asin matang masir berminyak khas daerah Gisting Lampung dengan suasana pasar tradisional otentik" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBz9UfMsEniBsYHN9etO3xhEnKWRltR1OoBFAfBzASSgiVG8Rv5G37UaZMTOqaimi4X43C_8IhwKrozJ0t_dOIaVPenyom18xLzePgySoQmLmRNFhm2a8_JCU3krXo9L4CsQDRLaBQPYp2sfiOW3W56xqKRrBOsW5sFDugjOHj3NYDSSwxneav1HMGertyDHP9ZBH5H747ugu43Hnm3dz2Y2gMx7gGWEXBV2tWK8Q"/>
+<span class="absolute top-1 left-1 w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Telur Asin Masir Asli Gisting</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-[10px] font-bold">RESTOK</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-ASN-03</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Olahan Bebek</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Box Isi 10 Butir</span>
+<span class="font-body-sm text-body-sm text-outline">Rasa gurih pulen masir</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 36.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Siap konsumsi</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-error">error</span>
+<span class="font-headline-sm text-headline-sm text-error font-bold">Sisa 5 Box</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tersisa 50 Butir (Ambang: 15)</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container-lowest border border-error-container rounded-xl p-1 gap-1 shadow-sm">
+<button class="w-7 h-7 rounded-lg bg-surface-container text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-error font-bold focus:outline-none" type="text" value="5"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-primary-container text-on-primary-container font-bold hover:bg-primary-container/80 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Telur Ayam Kampung Herbal MPASI (CRITICAL STOCK ROW) -->
+<tr class="bg-primary-fixed/20 hover:bg-primary-fixed/30 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Telur ayam kampung kecil bersih alami di dalam wadah karton jerami ramah lingkungan di atas meja kayu toko petani" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpxo1RGF3Tk7Q40eGnFzraigAronCshRjP4pgTQ7-wrO5Jbn784WJIqGYU69gbVtJfJkQ2_X7K1i5kDseQVZ42kvi9SQgES-Xv49d9RdOFjLYf3Xfl0xdUmO_1Q8msETIytRDRncHWAFCfcnw0DAVWsQQXOVTSKL418r-Qvx_KpUVDbwbzbk3pSLxknOz8aNcacVGH0U0G3Spda4qvuGo3Vkw2K_d-Xhh06gxfMKQ"/>
+<span class="absolute top-1 left-1 w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Telur Ayam Kampung Herbal MPASI</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-[10px] font-bold">RESTOK</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-KMP-05</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Herbal &amp; Bebas Kimia</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Pack Higienis (6 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">Standar bayi &amp; anak</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 25.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Pakan kunyit &amp; jahe</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-error">error</span>
+<span class="font-headline-sm text-headline-sm text-error font-bold">Sisa 4 Pack</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tersisa 24 Butir (Ambang: 10)</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container-lowest border border-error-container rounded-xl p-1 gap-1 shadow-sm">
+<button class="w-7 h-7 rounded-lg bg-surface-container text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-error font-bold focus:outline-none" type="text" value="4"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-primary-container text-on-primary-container font-bold hover:bg-primary-container/80 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Telur Ras Kiloan Timbangan Digital -->
+<tr class="hover:bg-surface/60 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Timbangan digital di meja pasar telur dengan keranjang anyaman penuh telur ayam negeri cokelat bersih" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrAirKcsc9ov2dO9i25kfzKNaxB0Se7CtQYBpOyq_VrA68_woxRFkBWdayReCuo15CKkqqedT2I3O8bUegir_hs5vu_3WIwSaNqYVTKItm350Cv8WvIRu9iHt1eRm9i8f1ClRTq_d6-2yoaQrXBl0vVZ18qtPokDcyqR2QPFaywtHWxKS3kA8hpZYr4ZWMspU9idCm5UnzqLZK12DdgXVJG8Q8chmBcPgnIgYsIZY"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block font-bold">Telur Ras Kiloan (Timbangan Digital)</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-RAS-02</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Eceran Warung</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Per Kilogram (Kg)</span>
+<span class="font-body-sm text-body-sm text-outline">Isi ±16-17 Butir</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 27.500</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Standar pasar Gisting</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">210 Kg</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">±3.460 Butir di Gudang</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-on-surface font-bold focus:outline-none" type="text" value="210"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Telur Puyuh Segar Peternak Wonosobo -->
+<tr class="hover:bg-surface/60 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Wadah kayu bundar berisi puluhan telur puyuh bercak hitam alami yang sangat bersih dan segar dari kandang peternakan lokal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHWFoD-_fZj4JGWzhth9MmvI2O7_kMCT4Ne4UezqRIkGWXeRsvyzWUZn1IQQ7aH4xisNHkD2N8D4gYGOHB3HJhRTQGhiMUXHj7lLZdrHnuczijqHVK1y_0WAtWKOlMrsIIx802AUyBOoBJc22LJjZmNmUEzDmTWJMDEzWNRFgGUfv9eohdMMb1uL53PMx32uASVDbeO9HHBDWDHtrw8ulhdMAFjdQj2m0of_Cs6zI"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block font-bold">Telur Puyuh Segar Peternak Wonosobo</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-PYH-01</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Puyuh Unggul</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface block">Mika Khusus (50 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">Bebas retak &amp; bersih</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-primary font-bold">Rp 22.000</span>
+<button class="p-1 rounded-md text-outline hover:text-primary transition-colors" title="Ubah harga">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Cocok untuk sate warung</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">95 Mika</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total 4.750 Butir</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-on-surface font-bold focus:outline-none" type="text" value="95"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-secondary rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-4 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 8: Telur Bebek Angon Organik Pesisir (HABIS - OUT OF STOCK) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors group opacity-75">
+<td class="py-space-md px-space-md text-center">
+<input class="w-4 h-4 rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container shadow-sm grayscale">
+<img class="w-full h-full object-cover" data-alt="Peti kayu sederhana di warung pasar tradisional berisi jerami kosong dengan sedikit telur bebek sisa display panen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrwf1wZcmuVb_GVL5WTO69gs2kjB4Kw7fs73ty4D6PDZe_WD4via7lPm83ebj8-j-MOOzgJwWB2Il0QMQ5lVuzfrlyvGPJA63sP9zjVNWhYXnuGx4SxM3hoURiROn9OxAn9IodNOkcQcF_wUnqxyWDEjXFOcYoM6BV9oTutqcN94-TXagrS73OsbtAJzvwzbNOMDh6lstrutbAO_lb17QGz5VUIhKVwUEgn4hHe6A"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant block font-bold">Telur Bebek Angon Organik</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">BZ-BBK-04</span>
+<span class="font-label-sm text-label-sm text-outline font-semibold">Organik Alami</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-md text-label-md text-on-surface-variant block">Tray Karpet (30 Butir)</span>
+<span class="font-body-sm text-body-sm text-outline">Bebas pakan pelet</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="font-price-display text-headline-sm text-on-surface-variant font-bold">Rp 95.000</span>
+</div>
+<span class="text-[11px] text-outline">Per karpet 30 butir</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-headline-sm text-headline-sm text-outline font-bold">Habis (0 Butir)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Menunggu Panen Besok Sore</span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center bg-surface-container rounded-xl p-1 gap-1 shadow-inner">
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">-</button>
+<input class="w-12 text-center bg-transparent font-stock-counter text-stock-counter text-outline font-bold focus:outline-none" type="text" value="0"/>
+<button class="w-7 h-7 rounded-lg bg-surface-container-lowest text-on-surface font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center">+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container-highest text-outline transition-colors flex items-center justify-center" title="Simpan Stok Cepat">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="w-10 h-6 bg-surface-variant rounded-full relative inline-flex items-center p-0.5 cursor-pointer">
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-0 shadow-sm transition-transform"></span>
+</button>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Ubah Detail">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Riwayat Pasokan">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- TABLE FOOTER & PAGINATION -->
+<div class="py-space-md px-space-lg bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm select-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">scale</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+          Menampilkan <strong>1-8</strong> dari <strong>12</strong> Varian Komoditas • Terhubung ke timbangan Pos Gisting
+        </span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm disabled:opacity-40 transition-colors" disabled="">
+          Sebelumnya
+        </button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-bold shadow-sm">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors">
+          2
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors">
+          Selanjutnya
+        </button>
+</div>
+</div>
+</div>
+<!-- SLIDE-OVER / MODAL: FORM TAMBAH / UBAH PRODUK TELUR BARU -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-background/50 backdrop-blur-sm hidden transition-all" id="modalTambahProduk">
+<div class="relative w-full max-w-2xl bg-surface-container-lowest rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col max-h-[921px]">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">egg</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Tambah Varian Telur Baru</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Katalog pasar komoditas Bang Zul Eggs Tanggamus</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors" onclick="document.getElementById('modalTambahProduk').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Form Fields) -->
+<div class="p-space-lg overflow-y-auto flex flex-col gap-space-md">
+<!-- Field 1: Nama Produk -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Nama Produk Telur <span class="text-error">*</span></label>
+<input class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Contoh: Telur Ayam Ras Pilihan..." type="text" value="Telur Ayam Ras Super Karpet (30 Butir)"/>
+</div>
+<!-- Field 2 & 3: Kategori & Kemasan -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Kategori Unggas / Telur <span class="text-error">*</span></label>
+<select class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+<option selected="">Telur Ayam Ras</option>
+<option>Telur Ayam Kampung</option>
+<option>Telur Bebek Mentah</option>
+<option>Telur Puyuh</option>
+<option>Olahan Asin Gisting</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Jenis Kemasan &amp; Satuan <span class="text-error">*</span></label>
+<select class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+<option selected="">Tray Karpet Karton (30 Butir)</option>
+<option>Mika Higienis (10 Butir)</option>
+<option>Mika Kecil (6 Butir)</option>
+<option>Kiloan (±16-17 Butir)</option>
+<option>Peti Kayu Besar (150 Butir)</option>
+</select>
+</div>
+</div>
+<!-- Field 4: Harga Harian & Grosir -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Harga Jual Normal (IDR) <span class="text-error">*</span></label>
+<div class="relative">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant font-label-md text-label-md">Rp</span>
+<input class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-surface-container-low font-headline-sm text-headline-sm text-primary font-bold focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" type="text" value="52.000"/>
+</div>
+<span class="font-label-sm text-[10px] text-tertiary">Harga eceran per tray karpet</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Harga Grosir Mitra (&gt;10 Tray)</label>
+<div class="relative">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant font-label-md text-label-md">Rp</span>
+<input class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-surface-container-low font-headline-sm text-headline-sm text-on-surface font-bold focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" type="text" value="50.500"/>
+</div>
+<span class="font-label-sm text-[10px] text-tertiary">Otomatis aktif untuk warung terverifikasi</span>
+</div>
+</div>
+<!-- Field 5: Stok Awal & Ambang Batas -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Jumlah Pasokan Stok Awal <span class="text-error">*</span></label>
+<input class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low font-stock-counter text-stock-counter text-on-surface focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" type="number" value="140"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Ambang Peringatan Menipis</label>
+<input class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low font-stock-counter text-stock-counter text-error focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" type="number" value="15"/>
+</div>
+</div>
+<!-- Field 6: Deskripsi & Manfaat -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Deskripsi Singkat &amp; Kualitas Panen</label>
+<textarea class="w-full px-space-md py-2 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" rows="3">Dipanen subuh hari dari mitra peternak ayam ras lereng Gisting. Telur disortir tanpa retak, cangkang tebal berserat cokelat bersih, kuning telur utuh &amp; bertekstur kental alami.</textarea>
+</div>
+<!-- Field 7: Foto Produk Upload Area -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Foto Produk Segar</label>
+<div class="p-space-md rounded-2xl bg-surface-container-low flex flex-col sm:flex-row items-center gap-space-md">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container shrink-0 shadow-sm relative group">
+<img class="w-full h-full object-cover" data-alt="Foto close up tumpukan rak telur ayam ras berbutir cokelat segar di pasar tradisional dengan cahaya matahari pagi hangat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP8EwY0PtV-Idxg-ufyCx-2XLaoLieaU2ibyWU6T9xh9H2gqnxFTd9nB55s2v8e_nfIawtYdXJXjJWG9ShS8b4XqT2e-T03vVNl0y1Dh_ZQhnu1EVmHihD2ruVWvpa4G42DrV1ERb9A4VLsazVWl9Y6Yh55BAOrOc_2xrbGeOELEvwvr8yLd3P92ToaHwJD_7mseFMQkceBdv7GNpTcKh-qL7Xz_lxic_6osR3jyw"/>
+<div class="absolute inset-0 bg-on-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-surface-container-lowest text-[18px]">edit</span>
+</div>
+</div>
+<div class="flex-1 text-center sm:text-left">
+<span class="font-headline-sm text-label-lg text-on-surface block">rak_telur_karpet_gisting.jpg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Ukuran file: 2.4 MB • Format: JPG siap tayang</span>
+<div class="flex items-center justify-center sm:justify-start gap-2 mt-2">
+<button class="px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+                  Ganti Foto
+                </button>
+<button class="px-3 py-1 rounded-lg bg-error-container text-on-error-container font-label-sm text-label-sm transition-colors" type="button">
+                  Hapus
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<button class="px-space-lg py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors" onclick="document.getElementById('modalTambahProduk').classList.add('hidden')">
+          Batal
+        </button>
+<button class="px-space-xl py-2.5 rounded-xl bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm shadow-md transition-all" onclick="document.getElementById('modalTambahProduk').classList.add('hidden')">
+          Simpan &amp; Tayangkan ke Etalase
+        </button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
