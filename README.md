@@ -77,3 +77,4 @@ Cukup buka folder proyek dan **klik 2x pada file `index.html`** di browser apa p
 
 ---
 *Dibuat untuk digitalisasi agrikultur dan perdagangan lokal Kabupaten Tanggamus, Lampung.*
+
